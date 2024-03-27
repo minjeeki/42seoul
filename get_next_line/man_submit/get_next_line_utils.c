@@ -5,85 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 03:39:27 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/03/24 04:35:53 by minjeeki         ###   ########seoul.kr  */
+/*   Created: 2024/03/25 09:25:35 by minjeeki          #+#    #+#             */
+/*   Updated: 2024/03/27 20:36:42 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s)
+size_t	ft_strlen(char *s)
 {
-	size_t	i;
+	size_t	idx;
 
 	if (!s)
+	{
+		free(s);
 		return (0);
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	}
+	idx = 0;
+	while (s[idx] != 0)
+		idx++;
+	return (idx);
 }
 
 char	*ft_strchr(char *s, int c)
 {
-	unsigned int	i;
+	size_t	idx;
 
-	i = 0;
 	if (!s)
-		return (0);
-	while (s[i] != '\0')
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
+		free(s);
+		return (NULL);
 	}
-	if ((char)c == s[i])
-		return ((char *)&s[i]);
+	if (c == '\0')
+		return (s + ft_strlen(s));
+	idx = 0;
+	while (s[idx] != 0)
+	{
+		if (s[idx] == c)
+			return (s + idx);
+		idx++;
+	}
 	return (NULL);
 }
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	char	*mem;
-	size_t	i;
+	void				*res;
+	unsigned char		*ptr;
+	size_t				total_size;
+	size_t				idx;
 
-	i = 0;
-	mem = malloc(count * size);
-	if (!mem)
-		return (0);
-	while (i < size * count)
+	total_size = count * size;
+	res = (void *)malloc(total_size);
+	if (!res)
+		return (NULL);
+	ptr = (unsigned char *)res;
+	idx = 0;
+	while (idx < total_size)
 	{
-		mem[i] = 0;
-		i++;
+		ptr[idx] = 0;
+		idx++;
 	}
-	return (mem);
+	return (res);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*new;
+	char	*res;
 	size_t	i;
-	size_t	j;
 	size_t	len_s1;
-	size_t	len_s2;
 
 	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	new = ft_calloc((len_s1 + len_s2 + 1), sizeof(char));
-	i = 0;
-	j = 0;
-	if (new == NULL)
-		return (NULL);
-	while (i < len_s1)
+	res = ft_calloc((len_s1 + ft_strlen(s2) + 1), sizeof(char));
+	if (res != NULL)
 	{
-		new[i] = s1[i];
-		i++;
-	}
-	while (j < len_s2)
-	{
-		new[i + j] = s2[j];
-		j++;
+		i = 0;
+		while (i < len_s1)
+		{
+			res[i] = s1[i];
+			i++;
+		}
+		i = 0;
+		while (i < ft_strlen(s2))
+		{
+			res[len_s1 + i] = s2[i];
+			i++;
+		}
 	}
 	free(s1);
-	return (new);
+	return (res);
 }

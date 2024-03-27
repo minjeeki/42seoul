@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 09:20:58 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/03/26 16:10:28 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/03/27 21:33:15 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,34 @@
 char	*put_data_in_s_buffer(int fd, char *s_buffer);
 char	*read_from_s_buffer(char *s_buffer);
 char	*clean_s_buffer_for_next_line(char *s_buffer);
+char	*free_and_return(char *ptr);
 
 // get_next_line 함수
 char	*get_next_line(int fd)
 {
 	static char	*s_buffer;
-	char		*res_line;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	s_buffer = put_data_in_s_buffer(fd, s_buffer);
 	if (!s_buffer)
 		return (0);
-	res_line = read_from_s_buffer(s_buffer);
-	if (res_line)
+	line = read_from_s_buffer(s_buffer);
+	if (!line)
+	{
+		s_buffer = free_and_return(s_buffer);
+		return (0);
+	}
+	if (ft_strchr(s_buffer, '\n') == 0)
+		s_buffer = free_and_return(s_buffer);
+	else
+	{
 		s_buffer = clean_s_buffer_for_next_line(s_buffer);
-	return (res_line);
+		if (!s_buffer)
+			return (free_and_return(line));
+	}
+	return (line);
 }
 
 char	*put_data_in_s_buffer(int fd, char *s_buffer)
@@ -39,20 +51,22 @@ char	*put_data_in_s_buffer(int fd, char *s_buffer)
 	char	*tmp_buffer;
 	int		bytes_read;
 
-	tmp_buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	tmp_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!tmp_buffer)
+	{
+		s_buffer = free_and_return(s_buffer);
 		return (0);
+	}
 	bytes_read = 1;
-	while (bytes_read != 0 && !ft_strchr(tmp_buffer, '\n'))
+	while (bytes_read != 0 && !ft_strchr(s_buffer, '\n'))
 	{
 		bytes_read = read(fd, tmp_buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
 			free(tmp_buffer);
-			free(s_buffer);
-			return (0);
+			return (free_and_return(s_buffer));
 		}
-		tmp_buffer[bytes_read] = 0;
+		tmp_buffer[bytes_read] = '\0';
 		s_buffer = ft_strjoin(s_buffer, tmp_buffer);
 		if (!s_buffer)
 			break ;
@@ -63,53 +77,61 @@ char	*put_data_in_s_buffer(int fd, char *s_buffer)
 
 char	*read_from_s_buffer(char *s_buffer)
 {
-	char	*line;
 	size_t	len_line;
-	char	*ptr_newline;
+	char	*line;
 	size_t	idx;
 
-	len_line = 0;
 	if (!s_buffer[0])
 		return (0);
-	ptr_newline = ft_strchr(s_buffer, '\n');
-	if (ptr_newline == 0)
-		len_line = ft_strlen(s_buffer);
-	else
-		len_line = (ptr_newline - s_buffer) + 1;
-	line = (char *)ft_calloc(len_line + 1, sizeof(char));
+	len_line = 0;
+	while (s_buffer[len_line] && s_buffer[len_line] != '\n')
+		len_line++;
+	if (s_buffer[len_line] == '\n')
+		len_line++;
+	line = ft_calloc(len_line + 1, sizeof(char));
 	if (!line)
 		return (NULL);
 	idx = 0;
-	while (idx < len_line)
+	while (s_buffer[idx] != '\n' && s_buffer[idx] != 0)
 	{
 		line[idx] = s_buffer[idx];
 		idx++;
 	}
+	if (s_buffer[idx] == '\n')
+		line[idx] = '\n';
 	return (line);
 }
 
 char	*clean_s_buffer_for_next_line(char *s_buffer)
 {
-	size_t	i;
-	size_t	j;
-	char	*leftover;
+	size_t	idx_newline;
+	size_t	idx;
+	char	*new_s_buffer;
+	size_t	len_new_buffer;
 
-	i = 0;
-	while (s_buffer[i] && s_buffer[i] != '\n')
-		i++;
-	if (!s_buffer[i])
+	idx_newline = 0;
+	while (s_buffer[idx_newline] != '\n')
+		idx_newline++;
+	len_new_buffer = ft_strlen(s_buffer) - idx_newline;
+	new_s_buffer = ft_calloc(len_new_buffer + 1, sizeof(char));
+	if (!new_s_buffer)
 	{
 		free(s_buffer);
-		return (0);
-	}
-	leftover = ft_calloc(ft_strlen(s_buffer) - i + 1, sizeof(char));
-	if (!leftover)
 		return (NULL);
-	i++;
-	j = 0;
-	while (s_buffer[i])
-		leftover[j++] = s_buffer[i++];
-	leftover[j] = '\0';
+	}
+	idx = 0;
+	while (s_buffer[idx_newline + 1 + idx] != 0)
+	{
+		new_s_buffer[idx] = s_buffer[idx_newline + 1 + idx];
+		idx++;
+	}
 	free(s_buffer);
-	return (leftover);
+	return (new_s_buffer);
+}
+
+char	*free_and_return(char *ptr)
+{
+	free(ptr);
+	ptr = NULL;
+	return (ptr);
 }
