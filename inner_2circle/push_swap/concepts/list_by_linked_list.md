@@ -30,7 +30,7 @@ typedef struct {
 
 ```C
 ListNode *head;
-head = head;
+head = NULL;
 ```
 
 - 특정 연결 리스트의 공백 여부를 확인하기 위해서는 head 포인터가 NULL 값을 갖고 있는지 검사하면 된다.
@@ -42,17 +42,17 @@ head = head;
 - 첫번째 노드 생성 : 동적 할당 -> 필드 값 부여 -> head 포인터에 해당 노드의 포인터값 할당
 	
 	```C
-	ListNode* insertFirst(Node* head, int newData)
+	ListNode* linkNode(ListNode* previous, int newData)
 	{
 		ListNode*	newNode;
 		
 		newNode = (ListNode*)malloc(sizeof(ListNode));
-		if (first_node == NULL)
+		if (newNode == NULL)
 			error("malloc failed");
 		newNode -> data = newData;
 		newNode -> next = NULL;
 
-		head = newNode;
-		return (head);
+		previous = newNode;
+		return (previous);
 	}
 	```
