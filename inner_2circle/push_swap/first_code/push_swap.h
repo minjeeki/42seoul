@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:58:28 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/12 20:26:28 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/17 17:39:26 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 // 구조체 배열의 dequeue
 typedef struct s_deque{
-	int *arr;
+	int	*arr;
 	int	top;
 	int	bottom;
-} t_deque;
+}	t_deque;
 
-int ft_check_validate_and_normalize(int argc, char *argv[], int *origin_arr);
-int ft_free_stack(t_deque *stack, int *arr);
-int ft_free_arr(int *arr);
-int ft_print_error();
+int	ft_check_validate_and_normalize(int argc, char *argv[], int *origin_arr);
+int	ft_free_stack(t_deque *stack, int *arr);
+int	ft_free_arr(int *arr);
+int	ft_print_error(void);
 
 #endif
