@@ -26,4 +26,9 @@ typedef struct s_deque{
 	int	bottom;
 } t_deque;
 
+int ft_check_validate_and_normalize(int argc, char *argv[], int *origin_arr);
+int ft_free_stack(t_deque *stack, int *arr);
+int ft_free_arr(int *arr);
+int ft_print_error();
+
 #endif
