@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:29:39 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/18 13:42:01 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/18 16:04:11 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_swap(int *arr, int idx)
 	arr[idx + 1] = tmp;
 }
 
+// 디버깅을 위해 사용했던 함수 (제출 전에 삭제 필요)
 void	ft_print_arr(int argc, int *input_arr)
 {
 	int	idx;
