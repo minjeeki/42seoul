@@ -6,33 +6,36 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:29:29 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/17 18:03:03 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/18 13:40:18 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 int		ft_safe_atoi(char *str, int *arr_mem);
-int		ft_convert_to_int_and_check_sorted(int argc, char *argv[], int *arr);
-void	ft_copy_arr_and_bubble_sort(int argc, int *origin_arr, int *sorted_arr);
-int		ft_check_dup_and_normalize(int argc, int *origin_arr, int *sorted_arr);
+int		ft_convert_to_int_n_check_sorted(int argc, char *argv[], int *arr);
+int		ft_copy_n_sort_with_no_dup(int argc, int *origin_arr, int *sorted_arr);
+void	ft_normalize(int argc, int *origin_arr, int *sorted_arr);
 
-int	ft_check_validate_and_normalize(int argc, char *argv[], int *origin_arr)
+int	ft_check_validate_n_normalize(int argc, char *argv[], int *origin_arr)
 {
 	int	*sorted_arr;
 
-	if (ft_convert_to_int_and_check_sorted(argc, argv, origin_arr) == 1)
+	if (argc == 1)
 		return (1);
-	sorted_arr = (int *)malloc(argc * sizeof(int));
+	if (ft_convert_to_int_n_check_sorted(argc, argv, origin_arr) == 1)
+		return (1);
+	sorted_arr = (int *)malloc((argc - 1) * sizeof(int));
 	if (sorted_arr == NULL)
 		return (1);
-	ft_copy_arr_and_bubble_sort(argc, origin_arr, sorted_arr);
-	if (ft_check_dup_and_normalize(argc, origin_arr, sorted_arr) == 1)
+	if (ft_copy_n_sort_with_no_dup(argc, origin_arr, sorted_arr) == 1)
 		return (ft_free_arr(sorted_arr));
+	ft_normalize(argc, origin_arr, sorted_arr);
 	free(sorted_arr);
 	return (0);
 }
 
+// 커맨드 라인 인자 문자열을 받아와 변환 후 arr_mem 포인터를 이용해 값 할당 (유효하지 않을 경우 1 반환)
 int	ft_safe_atoi(char *str, int *arr_mem)
 {
 	int			idx;
@@ -62,7 +65,8 @@ int	ft_safe_atoi(char *str, int *arr_mem)
 	return (0);
 }
 
-int	ft_convert_to_int_and_check_sorted(int argc, char *argv[], int *arr)
+// ft_safe_atoi 를 이용해 문자열 인자를 int로 변환, 
+int	ft_convert_to_int_n_check_sorted(int argc, char *argv[], int *arr)
 {
 	int	idx;
 	int	is_ascend;
@@ -90,53 +94,46 @@ int	ft_convert_to_int_and_check_sorted(int argc, char *argv[], int *arr)
 	return (0);
 }
 
-void	ft_copy_arr_and_bubble_sort(int argc, int *origin_arr, int *sorted_arr)
+// sorted_arr에 origin_arr의 값을 복사하고 sorted_arr을 bubble_sort로 정렬하기
+int	ft_copy_n_sort_with_no_dup(int argc, int *origin_arr, int *sorted_arr)
 {
 	int	idx1;
 	int	idx2;
-	int	tmp;
 
 	idx1 = 0;
-	while (idx1 < argc)
+	while (idx1 < argc - 1)
 	{
 		sorted_arr[idx1] = origin_arr[idx1];
 		idx1++;
 	}
 	idx1 = 0;
-	while (idx1 < argc - 1)
+	while (idx1 < argc - 2)
 	{
 		idx2 = 0;
-		while (idx2 < argc - 1 - idx1)
+		while (idx2 < argc - 2 - idx1)
 		{
 			if (sorted_arr[idx2] > sorted_arr[idx2 + 1])
-			{
-				tmp = sorted_arr[idx2];
-				sorted_arr[idx2] = sorted_arr[idx2 + 1];
-				sorted_arr[idx2 + 1] = tmp;
-			}
+				ft_swap(sorted_arr, idx2);
+			if (sorted_arr[idx2] == sorted_arr[idx2 + 1])
+				return (1);
 			idx2++;
 		}
 		idx1++;
 	}
+	return (0);
 }
 
-int	ft_check_dup_and_normalize(int argc, int *origin_arr, int *sorted_arr)
+// 정렬된 배열 soted_arr을 이용해 중복 확인 & 중복이 없을 경우 origin_arr을 sorted_arr 인덱스 값으로 정규화
+void	ft_normalize(int argc, int *origin_arr, int *sorted_arr)
 {
 	int	idx_origin;
 	int	idx_sorted;
 
-	idx_sorted = 1;
-	while (idx_sorted < argc - 1)
-	{
-		if (sorted_arr[idx_sorted] == sorted_arr[idx_sorted - 1])
-			return (1);
-		idx_sorted++;
-	}
 	idx_origin = 0;
-	while (idx_origin < argc)
+	while (idx_origin < argc - 1)
 	{
 		idx_sorted = 0;
-		while (idx_sorted < argc)
+		while (idx_sorted < argc - 1)
 		{
 			if (origin_arr[idx_origin] == sorted_arr[idx_sorted])
 				break ;
@@ -145,5 +142,4 @@ int	ft_check_dup_and_normalize(int argc, int *origin_arr, int *sorted_arr)
 		origin_arr[idx_origin] = idx_sorted;
 		idx_origin++;
 	}
-	return (0);
 }
