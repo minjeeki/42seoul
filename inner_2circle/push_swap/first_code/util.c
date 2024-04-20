@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:29:39 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/18 16:04:11 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/20 17:35:58 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,23 @@ int	ft_free_arr(int *arr)
 	return (1);
 }
 
-int	ft_free_stack(t_deque *stack, int *arr)
+int	ft_free_stack(t_list *stack)
 {
-	if (arr != NULL)
-		free(arr);
-	free(stack);
+	t_node	*tmp;
+
+	if (stack == NULL)
+		return (0);
+	stack -> cur = stack -> head;
+	while (stack -> cur != NULL)
+	{
+		tmp = stack -> cur;
+		stack -> cur = tmp -> right;
+		free(tmp);
+	}
+	stack -> head = NULL;
+	stack -> cur = NULL;
+	stack -> tail = NULL;
+	stack -> num_of_data = 0;
 	stack = NULL;
 	return (1);
 }
@@ -42,18 +54,4 @@ void	ft_swap(int *arr, int idx)
 	tmp = arr[idx];
 	arr[idx] = arr[idx + 1];
 	arr[idx + 1] = tmp;
-}
-
-// 디버깅을 위해 사용했던 함수 (제출 전에 삭제 필요)
-void	ft_print_arr(int argc, int *input_arr)
-{
-	int	idx;
-
-	idx = 0;
-	while (idx < argc - 1)
-	{
-		printf("%d ", input_arr[idx]);
-		idx++;
-	}
-	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:58:28 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/18 16:03:41 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/20 20:34:00 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,39 @@
 // malloc, free, write 함수 사용을 위해 필요한 헤더 파일
 # include <unistd.h>
 # include <stdlib.h>
+// 디버깅을 위해 사용했던 함수와 헤더 파일 (제출 시 삭제 필요)
+# include <stdio.h>
 
-// 구조체 배열의 dequeue
-typedef struct s_deque{
-	int	*arr;
-	int	top;
-	int	bottom;
-}	t_deque;
+// 노드와 연결 리스트 정의
+typedef struct s_node
+{
+	struct s_node	*left;
+	int				data;
+	struct s_node	*right;
+}	t_node;
+
+typedef struct s_linked_list
+{
+	t_node	*head;
+	t_node	*tail;
+	t_node	*cur;
+	int		num_of_data;
+}	t_list;
 
 // before_sort.c 함수 중 외부 파일에서 사용할 함수
 int		ft_check_validate_n_normalize(int argc, char *argv[], int *origin_arr);
+// data_structure.c 함수 중 외부 파일에서 사용할 함수
+int		ft_init_n_copy(t_list *stack_a, t_list *stack_b, int argc, int *arr);
+void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node);
+t_node	*ft_delete_list(t_list *stack, int is_at_head);
 // utils.c 함수 중 외부 파일에서 사용할 함수
-int		ft_free_stack(t_deque *stack, int *arr);
+int		ft_free_stack(t_list *stack);
 int		ft_free_arr(int *arr);
 int		ft_print_error(void);
 void	ft_swap(int *arr, int idx);
-
 // 디버깅을 위해 사용했던 함수와 헤더 파일 (제출 시 삭제 필요)
-# include <stdio.h>
 void	ft_print_arr(int argc, int *input_arr);
+void	ft_print_stack(t_list *stack);
+void	check_leak(void);
 
 #endif
