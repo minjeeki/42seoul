@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:58:00 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/20 20:40:21 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/20 21:35:50 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int argc, char *argv[])
 	int		*input_arr;
 	t_list	stack_a;
 	t_list	stack_b;
-	t_node	*tmp_node;
 
 	input_arr = (int *)malloc((argc - 1) * sizeof(int));
 	if (input_arr == NULL)
