@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:29:29 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/20 18:03:10 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/21 14:22:00 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ft_safe_atoi(char *str, int *arr_mem);
 int		ft_convert_to_int_n_check_sorted(int argc, char *argv[], int *arr);
 int		ft_copy_n_sort_with_no_dup(int argc, int *origin_arr, int *sorted_arr);
 void	ft_normalize(int argc, int *origin_arr, int *sorted_arr);
+int		ft_check_validate_n_normalize(int argc, char *argv[], int *origin_arr);
 
 // before_sort.c 파일의 main 함수 같은 존재 (정렬 전 처리를 모두 담당하는 함수)
 int	ft_check_validate_n_normalize(int argc, char *argv[], int *origin_arr)

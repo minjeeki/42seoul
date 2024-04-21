@@ -6,7 +6,7 @@
 #    By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/20 21:26:09 by minjeeki          #+#    #+#              #
-#    Updated: 2024/04/20 21:40:46 by minjeeki         ###   ########seoul.kr   #
+#    Updated: 2024/04/21 14:22:44 by minjeeki         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re

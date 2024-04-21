@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   self_debug.c                                       :+:      :+:    :+:   */
+/*   sort_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 16:56:42 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/21 14:22:31 by minjeeki         ###   ########seoul.kr  */
+/*   Created: 2024/04/21 14:54:27 by minjeeki          #+#    #+#             */
+/*   Updated: 2024/04/21 17:02:19 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_print_arr(int argc, int *input_arr);
-void	ft_print_stack(t_list *stack);
-void	check_leak(void);
-
-void	ft_print_arr(int argc, int *input_arr)
-{
-	int	idx;
-
-	idx = 0;
-	while (idx < argc - 1)
-	{
-		printf("%d ", input_arr[idx]);
-		idx++;
-	}
-	printf("\n");
-}
-
-void	ft_print_stack(t_list *stack)
+int	ft_is_sorted(t_list *stack)
 {
 	stack -> cur = stack -> head -> right;
-	while (stack -> cur != stack -> tail)
+	while (stack -> cur -> right != NULL)
 	{
-		printf("%d ", stack -> cur -> data);
+		if (stack -> cur -> data > stack -> cur -> right -> data)
+			return (0);
 		stack -> cur = stack -> cur -> right;
 	}
-}
-
-// main 함수 시작 위치에 atexit(check_leak); 문장 추가
-void	check_leak(void)
-{
-	system("leaks a.out");
+	return (1);
 }

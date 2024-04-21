@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:58:28 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/20 20:34:00 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/21 17:03:23 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,26 @@ typedef struct s_linked_list
 	t_node	*head;
 	t_node	*tail;
 	t_node	*cur;
-	int		num_of_data;
+	int		size;
 }	t_list;
 
-// before_sort.c 함수 중 외부 파일에서 사용할 함수
+// before_sort.c 함수
 int		ft_check_validate_n_normalize(int argc, char *argv[], int *origin_arr);
-// data_structure.c 함수 중 외부 파일에서 사용할 함수
+// data_structure.c 함수
 int		ft_init_n_copy(t_list *stack_a, t_list *stack_b, int argc, int *arr);
 void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node);
 t_node	*ft_delete_list(t_list *stack, int is_at_head);
-// utils.c 함수 중 외부 파일에서 사용할 함수
+// stack_commands.c 함수
+void	cmd_push(t_list *from_stack, t_list *to_stack, char c);
+void	cmd_swap(t_list *stack, char c);
+void	cmd_rotate(t_list *stack, char c);
+void	cmd_reverse_rotate(t_list *stack, char c);
+// sort_optimization.c
+void	ft_sort_two(t_list *stack, char c);
+void	ft_sort_three(t_list *stack, char c);
+// sort_util.c
+int		ft_is_sorted(t_list *stack);
+// utils.c 함수
 int		ft_free_stack(t_list *stack);
 int		ft_free_arr(int *arr);
 int		ft_print_error(void);

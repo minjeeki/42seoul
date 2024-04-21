@@ -6,14 +6,17 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:01:10 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/20 20:33:12 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/21 14:20:54 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_init_stack(t_list *stack);
-int	ft_copy_arr_to_linked_list(t_list *stack, int argc, int *input_arr);
+int		ft_init_n_copy(t_list *stack_a, t_list *stack_b, int argc, int *arr);
+int		ft_init_stack(t_list *stack);
+int		ft_copy_arr_to_linked_list(t_list *stack, int argc, int *input_arr);
+void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node);
+t_node	*ft_delete_list(t_list *stack, int is_at_head);
 
 int	ft_init_n_copy(t_list *stack_a, t_list *stack_b, int argc, int *arr)
 {
@@ -42,7 +45,7 @@ int	ft_init_stack(t_list *stack)
 	stack -> head -> right = stack -> tail;
 	stack -> tail -> left = stack -> head;
 	stack -> tail -> right = NULL;
-	stack -> num_of_data = 0;
+	stack -> size = 0;
 	return (0);
 }
 
@@ -63,7 +66,7 @@ int	ft_copy_arr_to_linked_list(t_list *stack, int argc, int *input_arr)
 		new_node -> right = stack -> tail;
 		stack -> tail -> left -> right = new_node;
 		stack -> tail -> left = new_node;
-		(stack -> num_of_data)++;
+		(stack -> size)++;
 	}
 	return (0);
 }
@@ -84,7 +87,7 @@ void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node)
 		stack -> tail -> left -> right = input_node;
 		stack -> tail -> left = input_node;
 	}
-	(stack -> num_of_data)++;
+	(stack -> size)++;
 }
 
 t_node	*ft_delete_list(t_list *stack, int is_at_head)
@@ -105,6 +108,6 @@ t_node	*ft_delete_list(t_list *stack, int is_at_head)
 	}
 	deleted_node -> left = NULL;
 	deleted_node -> right = NULL;
-	(stack -> num_of_data)--;
+	(stack -> size)--;
 	return (deleted_node);
 }

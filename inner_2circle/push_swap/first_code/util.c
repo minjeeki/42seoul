@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:29:39 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/20 17:35:58 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/21 14:18:16 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_free_stack(t_list *stack)
 	stack -> head = NULL;
 	stack -> cur = NULL;
 	stack -> tail = NULL;
-	stack -> num_of_data = 0;
+	stack -> size = 0;
 	stack = NULL;
 	return (1);
 }
