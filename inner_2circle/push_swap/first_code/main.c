@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:58:00 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/20 21:35:50 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/22 21:44:34 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int argc, char *argv[])
 		return (ft_free_arr(input_arr));
 	if (ft_init_n_copy(&stack_a, &stack_b, argc, input_arr) == 1)
 		return (1);
+	sort_radix(&stack_a, &stack_b, argc);
 	return (!ft_free_stack(&stack_a) || !ft_free_stack(&stack_b));
 }

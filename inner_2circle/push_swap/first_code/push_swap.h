@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:58:28 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/21 17:03:23 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/22 21:58:46 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_node
 {
 	struct s_node	*left;
 	int				data;
+	char			*binary_str;
 	struct s_node	*right;
 }	t_node;
 
@@ -45,6 +46,8 @@ typedef struct s_linked_list
 
 // before_sort.c 함수
 int		ft_check_validate_n_normalize(int argc, char *argv[], int *origin_arr);
+int		ft_count_max_size(int max_n);
+char	*ft_convert_binary(int size_str, t_node *new_node);
 // data_structure.c 함수
 int		ft_init_n_copy(t_list *stack_a, t_list *stack_b, int argc, int *arr);
 void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node);
@@ -54,9 +57,8 @@ void	cmd_push(t_list *from_stack, t_list *to_stack, char c);
 void	cmd_swap(t_list *stack, char c);
 void	cmd_rotate(t_list *stack, char c);
 void	cmd_reverse_rotate(t_list *stack, char c);
-// sort_optimization.c
-void	ft_sort_two(t_list *stack, char c);
-void	ft_sort_three(t_list *stack, char c);
+// sort.c
+void	sort_radix(t_list *stack_a, t_list *stack_b, int argc);
 // sort_util.c
 int		ft_is_sorted(t_list *stack);
 // utils.c 함수

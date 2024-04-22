@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 17:01:10 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/21 14:20:54 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/22 22:01:37 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,19 @@ int	ft_copy_arr_to_linked_list(t_list *stack, int argc, int *input_arr)
 {
 	int		idx;
 	t_node	*new_node;
+	int		size_str;
 
 	idx = 0;
+	size_str = ft_count_max_size(argc - 1);
 	while (idx < (argc - 1))
 	{
 		new_node = (t_node *)malloc(sizeof(t_node));
 		if (new_node == NULL)
 			return (ft_free_stack(stack));
 		new_node -> data = input_arr[idx];
+		new_node -> binary_str = ft_convert_binary(size_str, new_node);
+		if (new_node -> binary_str == NULL)
+			return (1);
 		idx++;
 		new_node -> left = stack -> tail -> left;
 		new_node -> right = stack -> tail;
