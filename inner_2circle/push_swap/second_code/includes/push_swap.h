@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 21:15:10 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 22:11:06 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int		ft_parsing(int argc, char *argv[], int **origin_arr);
 int		ft_size_str(char *str);
 int		ft_safe_atoi(char *str, int *arr_mem, int idx_arr);
 int		ft_count_str_elem(char *str);
+// normalize.c
+int		ft_check_condition_and_normalize(int **origin_arr, int size);
+// utils_normalize.c
+void	ft_swap(int *arr, int idx);
 // sort_.c
 // utils.c
 int		ft_free_str_arr(char **str_arr);

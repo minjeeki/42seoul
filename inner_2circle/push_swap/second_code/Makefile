@@ -6,7 +6,7 @@
 #    By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/20 21:26:09 by minjeeki          #+#    #+#              #
-#    Updated: 2024/04/28 17:48:26 by minjeeki         ###   ########seoul.kr   #
+#    Updated: 2024/04/28 22:19:51 by minjeeki         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ INC_DIR = includes/
 SRC_DIR = srcs/
 OBJ_DIR = objs/
 
-COMMON_SRCS = parsing.c utils_parsing.c utils.c self_debug.c
-PSWAP_SRCS = push_swap.c $(COMMON_SRCS)
+COMMON_SRCS = parsing.c utils_parsing.c normalize.c utils_normalize.c self_debug.c
+PSWAP_SRCS = push_swap.c utils.c $(COMMON_SRCS)
 
 PSWAP_OBJS = $(addprefix $(OBJ_DIR), $(PSWAP_SRCS:.c=.o))
 
