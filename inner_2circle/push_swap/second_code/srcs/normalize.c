@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:26:15 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 22:38:46 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 23:55:09 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_normalize(int *origin_arr, int *sorted_arr, int size);
 int	ft_check_condition_and_normalize(int **origin_arr, int size)
 {
 	int	*sorted_arr;
-	
+
 	if (ft_is_sorted(*origin_arr, size) || ft_is_duplicated(*origin_arr, size))
 		return (1);
 	sorted_arr = (int *)malloc(size * sizeof(int));
