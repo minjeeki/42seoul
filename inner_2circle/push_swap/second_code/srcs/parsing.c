@@ -6,13 +6,12 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:15:21 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 20:31:41 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 21:19:27 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_count_str_elem(char *str);
 int	ft_count_total_elem(int argc, char *argv[]);
 int	ft_convert_to_int(char *argv[], int *origin_arr);
 
@@ -34,33 +33,7 @@ int	ft_parsing(int argc, char *argv[], int **origin_arr)
 	return (size_arr);
 }
 
-int	ft_count_str_elem(char *str)
-{
-	int	idx;
-	int	is_char;
-	int	count;
-
-	idx = 0;
-	is_char = 0;
-	if (str[idx] != ' ' && str[idx] != '\0')
-		is_char = 1;
-	count = 0;
-	while (str[idx] != '\0')
-	{
-		if (is_char == 0 && str[idx] != ' ')
-			is_char = 1;
-		else if (is_char == 1 && str[idx] == ' ')
-		{
-			is_char = 0;
-			count++;
-		}
-		idx++;
-	}
-	if (is_char == 1)
-		count++;
-	return (count);
-}
-
+// 커맨드라인 인자에 존재하는 공백 구분 문자열의 개수 확인 (for origin_arr 배열 크기 결정)
 int	ft_count_total_elem(int argc, char *argv[])
 {
 	int	idx;
