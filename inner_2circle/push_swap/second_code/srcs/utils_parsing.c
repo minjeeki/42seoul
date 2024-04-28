@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 16:14:50 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 21:18:30 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 21:23:55 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_size_str(char *str)
 	return (size_str);
 }
 
-// 문자열 중 int형으로 변환 가능한지 판단 후 int형으로 변환 (숫자로 변환이 불가능한 문자, int 범위 밖의 정수형은 Error 처리)
+// 문자열 중 int형으로 변환 가능한지 판단 후 int형으로 변환 (변환 불가 항목에 대해 Error 처리)
 int	ft_safe_atoi(char *str, int *arr_mem, int idx_arr)
 {
 	int			idx;
