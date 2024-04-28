@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_commands.c                                   :+:      :+:    :+:   */
+/*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:55:17 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/22 21:25:33 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 06:27:57 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	cmd_push(t_list *from_stack, t_list *to_stack, char c)
 		write(1, "pa\n", 3);
 	else if (c == 'b')
 		write(1, "pb\n", 3);
+	from_stack -> size--;
+	to_stack -> size++;
 }
 
 void	cmd_swap(t_list *stack, char c)

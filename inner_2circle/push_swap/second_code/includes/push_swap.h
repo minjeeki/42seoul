@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 03:50:39 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 05:07:03 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ void	cmd_push(t_list *from_stack, t_list *to_stack, char c);
 void	cmd_swap(t_list *stack, char c);
 void	cmd_rotate(t_list *stack, char c);
 void	cmd_reverse_rotate(t_list *stack, char c);
-// sort_.c
+// simple_sort.c && radix_sort.c
+void	simple_sort(t_list *stack_a, t_list *stack_b);
+void	radix_sort(t_list *stack_a, t_list *stack_b);
 // utils.c
 int		ft_free_str_arr(char **str_arr);
 int		ft_free_int_arr(int *int_arr);
