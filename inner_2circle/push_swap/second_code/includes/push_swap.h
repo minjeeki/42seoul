@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 23:56:10 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 00:12:55 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,26 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
-/* 최종 제출 시 주석 처리해야 하는 부분 */
+// 최종 제출 시 주석 처리해야 하는 부분
 # include <stdio.h>
-// self_debug.c
+
+// 양방향 연결 리스트 t_list와 연결 리스트 노드 t_node의 구조체 서넌
+typedef struct s_node
+{
+	struct s_node	*prev;
+	int				data;
+	int				binary_data;
+	struct s_node	*next;
+}	t_node;
+
+typedef struct s_list
+{
+	t_node	*head;
+	t_node	*tail;
+	int		size;
+}	t_list;
+
+// self_debug.c (최종 제출 시 주석 처리 필요)
 void	ft_print_int_arr(int *origin_arr, int size_arr);
 void	ft_print_str_arr(char	**origin_arr);
 void	check_leak(void);
