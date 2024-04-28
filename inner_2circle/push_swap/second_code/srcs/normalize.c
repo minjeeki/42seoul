@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:26:15 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 22:33:59 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 22:38:46 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	ft_check_condition_and_normalize(int **origin_arr, int size)
 	return (0);
 }
 
+// 초기화 상태의 int 배열이 정렬된 상태인지 확인
 int	ft_is_sorted(int *int_arr, int size)
 {
 	int	idx;
@@ -48,6 +49,7 @@ int	ft_is_sorted(int *int_arr, int size)
 	return (1);
 }
 
+// int 배열에 중복이 존재하는지 확인
 int	ft_is_duplicated(int *int_arr, int size)
 {
 	int	idx1;
@@ -68,6 +70,7 @@ int	ft_is_duplicated(int *int_arr, int size)
 	return (0);
 }
 
+// sorted_arr에 origin_arr의 값을 복사한 뒤 버블 정렬로 정렬 진행
 void	ft_copy_n_bubble_sort(int *origin_arr, int *sorted_arr, int size)
 {
 	int	idx1;
@@ -93,6 +96,7 @@ void	ft_copy_n_bubble_sort(int *origin_arr, int *sorted_arr, int size)
 	}
 }
 
+// origin_arr의 값을 sorted_arr의 인덱스 값으로 재할당하면서 정규화 진행
 void	ft_normalize(int *origin_arr, int *sorted_arr, int size)
 {
 	int	idx_origin;

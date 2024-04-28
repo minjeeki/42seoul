@@ -6,12 +6,13 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:10:16 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 22:10:30 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 22:38:48 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// 버블 정렬 내부에서 자리 바꿈 관련 코드
 void	ft_swap(int *arr, int idx)
 {
 	int	tmp;
