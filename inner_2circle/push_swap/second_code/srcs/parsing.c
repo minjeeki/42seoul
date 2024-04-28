@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:15:21 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 21:19:27 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 21:22:35 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_count_total_elem(int argc, char *argv[])
 	return (cnt_total);
 }
 
+// 커맨드라인 인자를 문자열 배열로 변환한 후 배열 내 문자열을 int형으로 변환해 origin_arr에 할당
 int	ft_convert_to_int(char *argv[], int *origin_arr)
 {
 	int		idx_argv;
