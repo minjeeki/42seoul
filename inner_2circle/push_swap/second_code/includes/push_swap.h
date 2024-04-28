@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 22:11:06 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/28 23:56:10 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 // self_debug.c
 void	ft_print_int_arr(int *origin_arr, int size_arr);
 void	ft_print_str_arr(char	**origin_arr);
+void	check_leak(void);
 // parsing.c
 int		ft_parsing(int argc, char *argv[], int **origin_arr);
 // utils_parsing.c
