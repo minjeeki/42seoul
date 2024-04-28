@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:58:55 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 00:11:47 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 03:38:05 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ void	ft_print_str_arr(char	**origin_arr)
 		idx++;
 	}
 	printf("---문자열 배열 요소 출력 종료---\n");
+}
+
+void	ft_print_stack(t_list *stack)
+{
+	stack -> cur = stack -> head -> right;
+	while (stack -> cur != stack -> tail)
+	{
+		printf("%d ", stack -> cur -> data);
+		stack -> cur = stack -> cur -> right;
+	}
 }
 
 // main 함수 시작 위치에 atexit(check_leak); 문장 추가
