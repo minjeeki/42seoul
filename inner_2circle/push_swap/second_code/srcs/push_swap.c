@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:08:01 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 22:34:55 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 00:01:35 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	main(int argc, char *argv[])
 	if (size_arr <= 0)
 		return (1);
 	if (ft_check_condition_and_normalize(&origin_arr, size_arr) == 1)
+	{
+		free(origin_arr);
 		return (1);
+	}
 	ft_print_int_arr(origin_arr, size_arr);
+	free(origin_arr);
 	return (0);
 }
