@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:26:15 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/28 23:58:54 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 20:59:23 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_is_duplicated(int *int_arr, int size)
 		while (idx2 < size)
 		{
 			if (int_arr[idx1] == int_arr[idx2])
-				return (1);
+				return (ft_print_error());
 			idx2++;
 		}
 		idx1++;

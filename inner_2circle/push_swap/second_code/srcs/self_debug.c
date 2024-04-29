@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:58:55 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 03:38:05 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/29 21:33:47 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ void	ft_print_str_arr(char	**origin_arr)
 
 void	ft_print_stack(t_list *stack)
 {
-	stack -> cur = stack -> head -> right;
-	while (stack -> cur != stack -> tail)
+	t_node	*cur;
+
+	cur = stack -> head -> right;
+	while (cur != stack -> tail)
 	{
-		printf("%d ", stack -> cur -> data);
-		stack -> cur = stack -> cur -> right;
+		printf("%d ", cur -> data);
+		cur = cur -> right;
 	}
 }
 

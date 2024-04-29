@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 05:07:03 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 02:48:48 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_linked_list
 {
 	t_node	*head;
 	t_node	*tail;
-	t_node	*cur;
 	int		size;
 }	t_list;
 
@@ -67,18 +66,25 @@ int		ft_copy_arr_to_linked_list(t_list *stack, int argc, int *input_arr);
 void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node);
 t_node	*ft_delete_list(t_list *stack, int is_at_head);
 // utils_stack.c
+char	*ft_get_binary_str(int size_arr, t_node *new_node);
+int		ft_is_ascend(t_list *stack);
 // commands.c
 void	cmd_push(t_list *from_stack, t_list *to_stack, char c);
 void	cmd_swap(t_list *stack, char c);
 void	cmd_rotate(t_list *stack, char c);
 void	cmd_reverse_rotate(t_list *stack, char c);
 // simple_sort.c && radix_sort.c
+int		ft_get_min(t_list *stack, int at_leat);
+int		ft_get_distance(t_list *stack, int min);
+void	sort_3(t_list *stack_a);
+void	sort_4(t_list *stack_a, t_list *stack_b);
 void	simple_sort(t_list *stack_a, t_list *stack_b);
-void	radix_sort(t_list *stack_a, t_list *stack_b);
+void	radix_sort(t_list *stack_a, t_list *stack_b, int size);
 // utils.c
 int		ft_free_str_arr(char **str_arr);
 int		ft_free_int_arr(int *int_arr);
 int		ft_free_stack(t_list *stack);
 int		ft_print_error(void);
+int		get_max_bits(int max_num);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:55:17 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 06:27:57 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 02:35:15 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void	cmd_push(t_list *from_stack, t_list *to_stack, char c)
 		return ;
 	tmp_node = ft_delete_list(from_stack, 1);
 	ft_insert_list(to_stack, 1, tmp_node);
-	if (c == 'a')
-		write(1, "pa\n", 3);
-	else if (c == 'b')
+	if (c == 'b')
 		write(1, "pb\n", 3);
-	from_stack -> size--;
-	to_stack -> size++;
+	else if (c == 'a')
+		write(1, "pa\n", 3);
 }
 
 void	cmd_swap(t_list *stack, char c)

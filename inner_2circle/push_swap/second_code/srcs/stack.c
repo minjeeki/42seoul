@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:28:52 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 03:52:32 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 02:01:28 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int	ft_init_n_copy(t_list *stack_a, t_list *stack_b, int size_arr, int *arr)
 {
 	if (ft_init_stack(stack_a) == 1)
 		return (ft_free_int_arr(arr));
+	if (ft_copy_arr_to_linked_list(stack_a, size_arr, arr) == 1)
+		return (ft_free_int_arr(arr) && ft_free_stack(stack_a));
 	if (ft_init_stack(stack_b) == 1)
 		return (ft_free_int_arr(arr) && ft_free_stack(stack_a));
-	if (ft_copy_arr_to_linked_list(stack_a, size_arr, arr) == 1)
-		return (ft_free_int_arr(arr) && ft_free_stack(stack_b));
-	return (!ft_free_int_arr(arr));
+	ft_free_int_arr(arr);
+	return (0);
 }
 
 int	ft_init_stack(t_list *stack)
@@ -36,11 +37,13 @@ int	ft_init_stack(t_list *stack)
 		stack = NULL;
 		return (1);
 	}
+	stack -> head -> binary_str = NULL;
 	stack -> head -> left = NULL;
 	stack -> head -> right = NULL;
 	stack -> tail = (t_node *)malloc(sizeof(t_node));
 	if (stack -> tail == NULL)
 		return (ft_free_stack(stack));
+	stack -> tail -> binary_str = NULL;
 	stack -> head -> right = stack -> tail;
 	stack -> tail -> left = stack -> head;
 	stack -> tail -> right = NULL;
@@ -52,25 +55,23 @@ int	ft_copy_arr_to_linked_list(t_list *stack, int size_arr, int *input_arr)
 {
 	int		idx;
 	t_node	*new_node;
-	// int		size_str;
 
 	idx = 0;
-	// size_str = ft_count_max_size(argc - 1);
 	while (idx < size_arr)
 	{
 		new_node = (t_node *)malloc(sizeof(t_node));
 		if (new_node == NULL)
 			return (ft_free_stack(stack));
 		new_node -> data = input_arr[idx];
-		// new_node -> binary_str = ft_convert_binary(size_str, new_node);
-		// if (new_node -> binary_str == NULL)
-		//	return (1);
+		new_node -> binary_str = ft_get_binary_str(size_arr, new_node);
+		if (new_node -> binary_str == NULL)
+			return (1);
 		idx++;
 		new_node -> left = stack -> tail -> left;
 		new_node -> right = stack -> tail;
 		stack -> tail -> left -> right = new_node;
 		stack -> tail -> left = new_node;
-		(stack -> size)++;
+		stack -> size++;
 	}
 	return (0);
 }
@@ -91,7 +92,7 @@ void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node)
 		stack -> tail -> left -> right = input_node;
 		stack -> tail -> left = input_node;
 	}
-	(stack -> size)++;
+	stack -> size++;
 }
 
 t_node	*ft_delete_list(t_list *stack, int is_at_head)
@@ -112,6 +113,6 @@ t_node	*ft_delete_list(t_list *stack, int is_at_head)
 	}
 	deleted_node -> left = NULL;
 	deleted_node -> right = NULL;
-	(stack -> size)--;
+	stack -> size--;
 	return (deleted_node);
 }

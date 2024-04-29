@@ -6,16 +6,16 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 05:01:27 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 06:13:54 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 02:31:23 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int		ft_get_min(t_list *stack, int at_leat);
 int		ft_get_distance(t_list *stack, int min);
 void	sort_3(t_list *stack_a);
 void	sort_4(t_list *stack_a, t_list *stack_b);
-//void	sort_5(t_list *stack_a, t_list *stack_b);
 
 void	simple_sort(t_list *stack_a, t_list *stack_b)
 {
@@ -28,8 +28,22 @@ void	simple_sort(t_list *stack_a, t_list *stack_b)
 		sort_3(stack_a);
 	else if (size == 4)
 		sort_4(stack_a, stack_b);
-	// else if (size == 5)
-	// 	sort_5(stack_a, stack_b);
+}
+
+int	ft_get_min(t_list *stack, int at_least)
+{
+	t_node	*cur;
+	int		res;
+
+	cur = stack -> head -> right;
+	res = INT_MAX;
+	while (cur -> right != NULL)
+	{
+		if ((cur -> data < res) && (cur -> data > at_least))
+			res = cur -> data;
+		cur = cur -> right;
+	}
+	return (res);
 }
 
 int	ft_get_distance(t_list *stack, int min)
@@ -42,7 +56,7 @@ int	ft_get_distance(t_list *stack, int min)
 	while (cur -> right != NULL)
 	{
 		if (cur -> data == min)
-			break;
+			break ;
 		distance++;
 		cur = cur -> right;
 	}
@@ -51,24 +65,24 @@ int	ft_get_distance(t_list *stack, int min)
 
 void	sort_3(t_list *stack_a)
 {
-	t_node	*cur;
+	int		min;
 
-	cur = stack_a -> head -> right;
-	if (cur -> data == 0)
+	min = ft_get_min(stack_a, -1);
+	if ((stack_a -> head -> right -> data == min) && !ft_is_ascend(stack_a))
 	{
 		cmd_reverse_rotate(stack_a, 'a');
 		cmd_swap(stack_a, 'a');
 	}
-	else if (cur -> data == 1)
+	else if (stack_a -> head -> right -> data == min + 1)
 	{
-		if (cur -> right -> data == 0)
+		if (stack_a -> head -> right -> right -> data == min)
 			cmd_swap(stack_a, 'a');
 		else
 			cmd_reverse_rotate(stack_a, 'a');
 	}
-	else if (cur -> data == 2)
+	else if (stack_a -> head -> right -> data == min + 2)
 	{
-		if (cur -> right -> data == 0)
+		if (stack_a -> head -> right -> right -> data == min)
 			cmd_rotate(stack_a, 'a');
 		else
 		{
@@ -81,8 +95,10 @@ void	sort_3(t_list *stack_a)
 void	sort_4(t_list *stack_a, t_list *stack_b)
 {
 	int	min_distance;
+	int	min;
 
-	min_distance = ft_get_distance(stack_a, 0);
+	min = ft_get_min(stack_a, -1);
+	min_distance = ft_get_distance(stack_a, min);
 	if (min_distance == 1)
 		cmd_swap(stack_a, 'a');
 	else if (min_distance == 2)
@@ -92,7 +108,7 @@ void	sort_4(t_list *stack_a, t_list *stack_b)
 	}
 	else if (min_distance == 3)
 		cmd_reverse_rotate(stack_a, 'a');
-	cmd_push(stack_a, stack_b, 'a');
+	cmd_push(stack_a, stack_b, 'b');
 	sort_3(stack_a);
-	cmd_push(stack_b, stack_a, 'b');
+	cmd_push(stack_b, stack_a, 'a');
 }

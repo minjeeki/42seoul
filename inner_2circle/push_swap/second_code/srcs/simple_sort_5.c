@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_normalize.c                                  :+:      :+:    :+:   */
+/*   simple_sort_5.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 22:10:16 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 20:59:28 by minjeeki         ###   ########seoul.kr  */
+/*   Created: 2024/04/30 02:48:01 by minjeeki          #+#    #+#             */
+/*   Updated: 2024/04/30 02:49:04 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// 버블 정렬 내부에서 자리 바꿈 관련 코드
-void	ft_swap(int *arr, int idx)
+void	sort_5(t_list *stack_a, t_list *stack_b)
 {
-	int	tmp;
-
-	tmp = 0;
-	tmp = arr[idx];
-	arr[idx] = arr[idx + 1];
-	arr[idx + 1] = tmp;
+	
 }
