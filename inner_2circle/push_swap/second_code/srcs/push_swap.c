@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:08:01 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 02:46:25 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 03:56:01 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char *argv[])
 	t_list	stack_a;
 	t_list	stack_b;
 
-	atexit(check_leak);
 	size_arr = ft_parsing(argc, argv, &origin_arr);
 	if (size_arr <= 0)
 		return (1);
@@ -37,7 +36,7 @@ int	main(int argc, char *argv[])
 
 void	sort_stack(t_list *stack_a, t_list *stack_b)
 {
-	if (stack_a -> size <= 4)
+	if (stack_a -> size <= 5)
 		simple_sort(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b, stack_a -> size);

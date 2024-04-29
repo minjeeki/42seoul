@@ -6,7 +6,7 @@
 #    By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/20 21:26:09 by minjeeki          #+#    #+#              #
-#    Updated: 2024/04/29 05:07:22 by minjeeki         ###   ########seoul.kr   #
+#    Updated: 2024/04/30 04:01:33 by minjeeki         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ INC_DIR = includes/
 SRC_DIR = srcs/
 OBJ_DIR = objs/
 
-COMMON_SRCS = parsing.c utils_parsing.c normalize.c utils_normalize.c stack.c utils_stack.c commands.c radix_sort.c simple_sort.c self_debug.c
+COMMON_SRCS = parsing.c utils_parsing.c normalize.c utils_normalize.c stack.c utils_stack.c commands.c sort.c utils_sort.c self_debug.c
 PSWAP_SRCS = push_swap.c utils.c $(COMMON_SRCS)
 
 PSWAP_OBJS = $(addprefix $(OBJ_DIR), $(PSWAP_SRCS:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 02:48:48 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 04:01:12 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,16 @@ void	cmd_push(t_list *from_stack, t_list *to_stack, char c);
 void	cmd_swap(t_list *stack, char c);
 void	cmd_rotate(t_list *stack, char c);
 void	cmd_reverse_rotate(t_list *stack, char c);
-// simple_sort.c && radix_sort.c
-int		ft_get_min(t_list *stack, int at_leat);
-int		ft_get_distance(t_list *stack, int min);
+// sort.c
+void	radix_sort(t_list *stack_a, t_list *stack_b, int size);
+void	simple_sort(t_list *stack_a, t_list *stack_b);
 void	sort_3(t_list *stack_a);
 void	sort_4(t_list *stack_a, t_list *stack_b);
-void	simple_sort(t_list *stack_a, t_list *stack_b);
-void	radix_sort(t_list *stack_a, t_list *stack_b, int size);
+void	sort_5(t_list *stack_a, t_list *stack_b);
+// utils_sort.c
+int		ft_get_min(t_list *stack, int at_leat);
+int		ft_get_distance(t_list *stack, int min);
+void	ft_repeat_rotate(t_list *stack_a, int is_reverse);
 // utils.c
 int		ft_free_str_arr(char **str_arr);
 int		ft_free_int_arr(int *int_arr);
