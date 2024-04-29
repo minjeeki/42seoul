@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 05:01:27 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 03:59:38 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 04:45:58 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort_3(t_list *stack_a);
 void	sort_4(t_list *stack_a, t_list *stack_b);
 void	sort_5(t_list *stack_a, t_list *stack_b);
 
+// 5개를 초과하는 요소 개수에 대해서는 기수 정렬을 진행
 void	radix_sort(t_list *stack_a, t_list *stack_b, int size)
 {
 	int		idx;
@@ -41,6 +42,7 @@ void	radix_sort(t_list *stack_a, t_list *stack_b, int size)
 	}
 }
 
+// 5개 이하의 요소 개수에 대해서는 명령어 수를 줄이기 위해 simple_sort를 추가로 제작
 void	simple_sort(t_list *stack_a, t_list *stack_b)
 {
 	int	size;

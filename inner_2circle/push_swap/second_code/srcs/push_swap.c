@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:08:01 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 03:56:01 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 04:45:08 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
+// 스택의 개수에 따라 정렬 진행 (5개 이상부터 기수 정렬로 구분)
 void	sort_stack(t_list *stack_a, t_list *stack_b)
 {
 	if (stack_a -> size <= 5)

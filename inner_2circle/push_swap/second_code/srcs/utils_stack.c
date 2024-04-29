@@ -6,12 +6,13 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:36:13 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 02:08:32 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 04:47:42 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// 십진수의 숫자 (노드의 data 값)를 이진수로 변환한 값을 담은 문자열로 반환하는 함수 (itoa와 유사)
 char	*ft_get_binary_str(int size_arr, t_node *new_node)
 {
 	char	*binary_str;
@@ -35,21 +36,4 @@ char	*ft_get_binary_str(int size_arr, t_node *new_node)
 		digit_num /= 2;
 	}
 	return (binary_str);
-}
-
-int	ft_is_ascend(t_list *stack)
-{
-	int		idx;
-	t_node	*cur;
-
-	if (stack -> size < 2)
-		return (1);
-	cur = stack -> head -> right -> right;
-	while (cur -> right != NULL)
-	{
-		if (cur -> data < cur -> left -> data)
-			return (0);
-		cur = cur -> right;
-	}
-	return (1);
 }

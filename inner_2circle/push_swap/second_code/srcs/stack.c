@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:28:52 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 02:01:28 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 04:46:31 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_init_n_copy(t_list *stack_a, t_list *stack_b, int size_arr, int *arr)
 	return (0);
 }
 
+// 스택 새로 생성 시 실행할 함수 (더미노드가 2개 있는 양방향 연결 리스트 사용)
 int	ft_init_stack(t_list *stack)
 {
 	stack -> head = (t_node *)malloc(sizeof(t_node));
@@ -51,6 +52,7 @@ int	ft_init_stack(t_list *stack)
 	return (0);
 }
 
+// parsing.c의 결과를 담은 input_arr의 값을 stack에 일괄 이동 후 free
 int	ft_copy_arr_to_linked_list(t_list *stack, int size_arr, int *input_arr)
 {
 	int		idx;
@@ -76,6 +78,7 @@ int	ft_copy_arr_to_linked_list(t_list *stack, int size_arr, int *input_arr)
 	return (0);
 }
 
+// 스택 구조체에 노드를 추가하는 함수 (is_at_head 값을 기준으로 head쪽, tail쪽 구분 삽입)
 void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node)
 {
 	if (is_at_head == 1)
@@ -95,6 +98,7 @@ void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node)
 	stack -> size++;
 }
 
+// 스택 구조체에 노드를 삭제하는 함수 (is_at_head 값을 기준으로 head쪽, tail쪽 구분 삽입)
 t_node	*ft_delete_list(t_list *stack, int is_at_head)
 {
 	t_node	*deleted_node;

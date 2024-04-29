@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:17:03 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 04:01:12 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 04:44:34 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
-// 최종 제출 시 주석 처리해야 하는 부분
-# include <stdio.h>
+# include <stdio.h>					// 디버깅을 위해 만든 함수 (제출 전 삭제 필요)
 
 // 양방향 연결 리스트 t_list와 연결 리스트 노드 t_node의 구조체 서넌
 typedef struct s_node
@@ -67,7 +66,6 @@ void	ft_insert_list(t_list *stack, int is_at_head, t_node *input_node);
 t_node	*ft_delete_list(t_list *stack, int is_at_head);
 // utils_stack.c
 char	*ft_get_binary_str(int size_arr, t_node *new_node);
-int		ft_is_ascend(t_list *stack);
 // commands.c
 void	cmd_push(t_list *from_stack, t_list *to_stack, char c);
 void	cmd_swap(t_list *stack, char c);
@@ -83,6 +81,7 @@ void	sort_5(t_list *stack_a, t_list *stack_b);
 int		ft_get_min(t_list *stack, int at_leat);
 int		ft_get_distance(t_list *stack, int min);
 void	ft_repeat_rotate(t_list *stack_a, int is_reverse);
+int		ft_is_ascend(t_list *stack);
 // utils.c
 int		ft_free_str_arr(char **str_arr);
 int		ft_free_int_arr(int *int_arr);
