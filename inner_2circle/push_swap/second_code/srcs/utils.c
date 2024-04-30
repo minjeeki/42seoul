@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:46:13 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 04:52:02 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 09:11:03 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,13 @@ int	ft_free_stack(t_list *stack)
 	stack -> tail = NULL;
 	stack -> size = 0;
 	stack = NULL;
-	free(stack);
 	return (1);
 }
 
 // 정수형으로 변환 불가능한 인자, 중복된 요소가 있을 경우 출력하는 에러 문구
 int	ft_print_error(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	return (1);
 }
 

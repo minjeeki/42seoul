@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:15:21 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/30 04:45:40 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 09:07:21 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_count_total_elem(int argc, char *argv[])
 		return (-1);
 	while (argv[idx] != NULL)
 	{
+		if (argv[idx][0] == '\0')
+			return(ft_print_error() - 2);
 		cnt_arg = ft_count_str_elem(argv[idx]);
 		cnt_total += cnt_arg;
 		idx++;

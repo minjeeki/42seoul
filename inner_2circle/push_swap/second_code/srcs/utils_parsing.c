@@ -6,7 +6,7 @@
 /*   By: minjeeki <minjeeki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 16:14:50 by minjeeki          #+#    #+#             */
-/*   Updated: 2024/04/29 20:59:29 by minjeeki         ###   ########seoul.kr  */
+/*   Updated: 2024/04/30 09:45:39 by minjeeki         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ int	ft_size_str(char *str)
 	return (size_str);
 }
 
+int	ft_check_valid_char_and_range(long long num, int sign, char *str, int idx)
+{
+	long long	real_num;
+
+	if (str[idx] < '0' || str[idx] > '9')
+		return (1);
+	num = num * 10 + (str[idx++] - '0');
+	real_num = num * sign;
+	if (real_num > (long long)INT_MAX || real_num < (long long)INT_MIN)
+		return (1);
+	return (0);
+}
+
 // 문자열 중 int형으로 변환 가능한지 판단 후 int형으로 변환 (변환 불가 항목에 대해 Error 처리)
 int	ft_safe_atoi(char *str, int *arr_mem, int idx_arr)
 {
@@ -34,22 +47,20 @@ int	ft_safe_atoi(char *str, int *arr_mem, int idx_arr)
 	idx = 0;
 	sign = 1;
 	num = 0;
-	if (str[idx] == '\0')
-		return (1);
 	if (str[idx] == '-' || str[idx] == '+')
 	{
 		if (str[idx] == '-')
 			sign = -1;
 		idx++;
 	}
+	if (str[idx] == '\0')
+		return (ft_print_error() - 2);
 	while (str[idx] != '\0')
 	{
-		if (str[idx] < '0' || str[idx] > '9')
+		if (ft_check_valid_char_and_range(num, sign, str, idx) == 1)
 			return (ft_print_error());
 		num = num * 10 + (str[idx++] - '0');
 	}
-	if (num * sign < ((long long)INT_MIN) || num * sign > ((long long)INT_MAX))
-		return (ft_print_error());
 	arr_mem[idx_arr] = (int)(num * sign);
 	return (0);
 }
